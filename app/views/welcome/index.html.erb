@@ -1,0 +1,12 @@
+<h1>Cthulhu Wars!</h1>
+<h3>For Organizing and Planning Cthulhu Wars Games</h3>
+
+<% if current_user %>
+  <ul>
+  <% @game_days.each do |day| %>
+    <li><%= day.day %></li>
+    <ul>
+    </ul>
+  <% end %>
+  </ul>
+<% end %>

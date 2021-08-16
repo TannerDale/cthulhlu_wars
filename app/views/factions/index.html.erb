@@ -1,0 +1,7 @@
+<h1>Factions</h1>
+
+<ul>
+<% @factions.each do |faction| %>
+  <li><%= link_to faction.name, "/factions/#{faction.id}", class: 'link-dark' %></li>
+<% end %>
+</ul>

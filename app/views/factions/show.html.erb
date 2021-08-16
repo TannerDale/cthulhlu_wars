@@ -1,0 +1,28 @@
+<h1><%= @faction.name %></h1>
+
+<h3>Color:</h3>
+<ul><li style="color: <%= @faction.display_color %>;"><%= @faction.color %></li></ul>
+<h3>About:</h3>
+<ul><li><%= @faction.description %></li></ul>
+<h3>Unique Ability:</h3>
+<ul><li><%= @faction.unique_ability %></li></ul>
+<h3>Great Old One(s):</h3>
+<ul>
+  <% @faction.great_old_ones.each do |great_old_one| %>
+    <li><%= link_to great_old_one.name, "/great_old_ones/#{great_old_one.id}" %></li>
+  <% end %>
+</ul>
+<h3>Spellbooks:</h3>
+<ul>
+  <% @faction.spellbooks.each do |book| %>
+    <li><%= book.name %></li>
+    <ul>
+      <% if book.use.length == 1 %>
+        <li>Action Cost: <%= book.use %></li>
+      <% else %>
+          <li><%= book.use %></li>
+      <% end %>
+      <li><%= book.description %></li>
+    </ul>
+  <% end %>
+</ul>

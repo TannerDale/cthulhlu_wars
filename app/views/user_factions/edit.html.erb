@@ -1,0 +1,10 @@
+<h1>Choose your Factions:</h1>
+
+<%= form_tag '/user_factions', method: :patch do %>
+  <% Faction.all.each do |faction| %>
+    <%= check_box_tag  "factions[]", faction.id, @user.factions.include?(faction) %>
+    <%= label_tag faction.name %><br/>
+    <%= hidden_field_tag :user_id, @user.id %>
+  <% end %>
+  <%= submit_tag 'Update Factions', class: 'button button-primary' %>
+<% end %>

@@ -1,0 +1,16 @@
+<h1><%= @old_one.name %></h1>
+
+<h3>Faction:</h3>
+<ul><li><%= link_to @old_one.faction.name, "/factions/#{@old_one.faction.id}" %></li></ul>
+<h3>Cost:</h3>
+<ul><li><%= @old_one.cost %> Power</li></ul>
+<h3>Steps to Awaken:</h3>
+<ul style='list-style-type: none;'>
+  <% @old_one.steps_to_awaken.each do |step| %>
+    <li><%= step %></li>
+  <% end %>
+</ul>
+<h3>Combat:</h3>
+<ul><li><%= @old_one.combat %></li></ul>
+<h3>Special Ability:</h3>
+<ul><li><%= @old_one.ability %></li></ul>

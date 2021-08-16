@@ -1,0 +1,11 @@
+<h1>Sign Up!</h1>
+
+<%= form_tag '/users', method: :post do %>
+  <%= label_tag :username %><br/>
+  <%= text_field_tag :username %><br/>
+  <%= label_tag :password %><br/>
+  <%= password_field_tag :password %><br/>
+  <%= label_tag :password_confirmation %><br/>
+  <%= password_field_tag :password_confirmation %><br/>
+  <%= submit_tag 'Sign Me Up!', class: 'button button-primary' %>
+<% end %>

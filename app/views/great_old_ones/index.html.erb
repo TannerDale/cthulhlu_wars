@@ -1,0 +1,8 @@
+<h1>Great Old Ones</h1>
+<h2 style='color: red;'>Beware all ye who enter!</h2>
+
+<ul>
+<% @great_old_ones.each do |old_one| %>
+  <li><%= link_to old_one.name, "/great_old_ones/#{old_one.id}", class: 'link-dark' %></li>
+<% end %>
+</ul>

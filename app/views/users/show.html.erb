@@ -1,0 +1,9 @@
+<h1>Wassup <%= @user.username %></h1>
+
+<h3>My factions:</h3>
+<ul>
+<% @user.factions.each do |faction| %>
+  <li><%= link_to faction.name, "/factions/#{faction.id}" %></li>
+<% end %>
+</ul>
+<%= link_to 'Edit Factions', "/users/#{@user.id}/factions/edit" %>

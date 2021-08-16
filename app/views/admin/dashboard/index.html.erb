@@ -1,0 +1,6 @@
+<h1>Lmao No Plebs Here</h1>
+
+<%= form_with url: '/game_days', method: :post do |f| %>
+  <%= f.datetime_field(:day, min: Date.today) %>
+  <%= f.submit 'Add Date', class: 'button button-primary' %>
+<% end %>
