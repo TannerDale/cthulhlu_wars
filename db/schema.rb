@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_043102) do
+ActiveRecord::Schema.define(version: 2021_08_16_235910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "can_attends", force: :cascade do |t|
+    t.bigint "game_day_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_day_id"], name: "index_can_attends_on_game_day_id"
+    t.index ["user_id"], name: "index_can_attends_on_user_id"
+  end
 
   create_table "cultists", force: :cascade do |t|
     t.bigint "faction_id"
@@ -35,7 +44,7 @@ ActiveRecord::Schema.define(version: 2021_08_16_043102) do
   end
 
   create_table "game_days", force: :cascade do |t|
-    t.date "day"
+    t.datetime "day"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_08_16_043102) do
     t.integer "role", default: 0
   end
 
+  add_foreign_key "can_attends", "game_days"
+  add_foreign_key "can_attends", "users"
   add_foreign_key "cultists", "factions"
   add_foreign_key "great_old_ones", "factions"
   add_foreign_key "monsters", "factions"

@@ -1,6 +1,18 @@
 <h1>Lmao No Plebs Here</h1>
 
-<%= form_with url: '/game_days', method: :post do |f| %>
+<h3>Current day options:</h3>
+<ul>
+<% GameDay.days.each do |day| %>
+  <li><%= day.formatted %>  (<%= link_to 'Remove', admin_game_day_path(day), method: :delete %>)</li>
+  <ul>
+    <li>Can attend: <%= day.can_attend%></li>
+    <li>Cannot attend: <%= day.cannot_attend %></li>
+  </ul>
+<% end %>
+</ul>
+<br/>
+<h3>Add New Day:</h3>
+<%= form_with url: admin_game_days_path, method: :post, local: true do |f| %>
   <%= f.datetime_field(:day, min: Date.today) %>
-  <%= f.submit 'Add Date', class: 'button button-primary' %>
+  <%= f.submit 'Add Day', class: 'btn btn-primary btn-sm' %>
 <% end %>

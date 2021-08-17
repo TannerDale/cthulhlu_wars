@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   has_many :user_factions
   has_many :factions, through: :user_factions
+
+  has_many :can_attends
+  has_many :game_days, through: :can_attends
 end

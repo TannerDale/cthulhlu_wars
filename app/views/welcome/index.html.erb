@@ -1,12 +1,17 @@
 <h1>Cthulhu Wars!</h1>
 <h3>For Organizing and Planning Cthulhu Wars Games</h3>
-
+<br/>
 <% if current_user %>
+<p><b>Potential Days:</b></p>
+<%= form_tag '/can_attends', method: :patch do %>
+<% @game_days.each do |day| %>
   <ul>
-  <% @game_days.each do |day| %>
-    <li><%= day.day %></li>
-    <ul>
-    </ul>
-  <% end %>
+    <li><%= day.formatted %></li>
+    <div class="form-check form-switch">
+      <%= check_box_tag  "game_days[]", day.id, current_user.game_days.include?(day), id: "flexSwitchCheckDefault", class: "form-check-input", onchange: "this.form.submit()" %>
+      <label class="form-check-label" for="flexSwitchCheckDefault">I can make it!</label>
+    </div>
   </ul>
+  <% end %>
+<% end %>
 <% end %>

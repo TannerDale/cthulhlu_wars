@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
+    resources :game_days, only: [:create, :destroy, :update]
   end
 
-  resources :game_days, only: [:create, :destroy]
+  patch '/can_attends', to: 'can_attends#update'
 end
