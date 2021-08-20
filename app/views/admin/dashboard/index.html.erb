@@ -5,8 +5,8 @@
 <% GameDay.days.each do |day| %>
   <li><%= day.formatted %>  (<%= link_to 'Remove', admin_game_day_path(day), method: :delete %>)</li>
   <ul>
-    <li>Can attend: <%= day.can_attend%></li>
-    <li>Cannot attend: <%= day.cannot_attend %></li>
+    <li>Can attend: <%= day.can_attend%>.</li>
+    <li>Cannot attend: <%= day.cannot_attend %>.</li><br/>
   </ul>
 <% end %>
 </ul>

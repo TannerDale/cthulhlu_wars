@@ -6,13 +6,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <div class="navbar-nav">
-        <%= link_to 'Factions', '/factions', class: 'nav-link' %>
+        <%= link_to 'Factions', factions_path, class: 'nav-link' %>
         <%= link_to 'Great Old Ones', '/great_old_ones', class: 'nav-link' %>
       </div>
       <div class="navbar-nav ms-auto">
         <% if current_user %>
           <%= link_to 'Profile', '/profile', class: 'nav-link' %>
-          <%= link_to 'Admin Dashboard', '/admin/dashboard', class: 'nav-link' if current_admin?%>
+          <%= link_to 'Admin Dashboard', '/admin/dashboard', class: 'nav-link' if current_admin? %>
           <%= link_to 'Logout', '/logout', method: :delete, class: 'nav-link' %>
         <% else %>
           <%= link_to 'Log In', '/login', class: 'nav-link' %>

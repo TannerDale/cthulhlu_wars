@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_16_235910) do
+ActiveRecord::Schema.define(version: 2021_08_17_190045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,15 @@ ActiveRecord::Schema.define(version: 2021_08_16_235910) do
     t.index ["faction_id"], name: "index_spellbooks_on_faction_id"
   end
 
+  create_table "strategies", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "faction_id"
+    t.integer "turn"
+    t.string "description"
+    t.index ["faction_id"], name: "index_strategies_on_faction_id"
+    t.index ["user_id"], name: "index_strategies_on_user_id"
+  end
+
   create_table "user_factions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "faction_id"
@@ -114,6 +123,12 @@ ActiveRecord::Schema.define(version: 2021_08_16_235910) do
   add_foreign_key "monsters", "factions"
   add_foreign_key "spellbook_requirements", "factions"
   add_foreign_key "spellbooks", "factions"
+  add_foreign_key "strategies", "factions"
+  add_foreign_key "strategies", "users"
   add_foreign_key "user_factions", "factions"
   add_foreign_key "user_factions", "users"
 end
+
+# on_delete: :cascade, if faction gets deleted: delete this record also
+# do same for user, don't want to remove from all factions before being able to delete it
+# will need to remake foreign keys

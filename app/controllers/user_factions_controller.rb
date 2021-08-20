@@ -3,7 +3,7 @@ class UserFactionsController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
@@ -13,6 +13,6 @@ class UserFactionsController < ApplicationController
       User.find(params[:user_id]).factions = []
     end
 
-    redirect_to "/users/#{params[:user_id]}"
+    redirect_to profile_path
   end
 end

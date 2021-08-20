@@ -2,8 +2,13 @@
 
 <h3>My factions:</h3>
 <ul>
-<% @user.factions.each do |faction| %>
-  <li><%= link_to faction.name, "/factions/#{faction.id}" %></li>
+<% @user.liked_factions.each do |faction| %>
+  <li style="font-size: 20px;"><%= faction.name %></li>
+  <ul>
+    <li><%= link_to "About", faction_path(faction.id) %></li>
+    <li><%= link_to "Strategies", faction_strategies_path(faction.id) %></li>
+    <br/>
+  </ul>
 <% end %>
 </ul>
-<%= link_to 'Edit Factions', "/users/#{@user.id}/factions/edit" %>
+<%= link_to 'Edit Factions', profile_factions_edit_path %>

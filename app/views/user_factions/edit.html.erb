@@ -1,6 +1,6 @@
 <h1>Choose your Factions:</h1>
 
-<%= form_tag '/user_factions', method: :patch do %>
+<%= form_tag profile_factions_path, method: :patch do %>
   <% Faction.all.each do |faction| %>
     <%= check_box_tag  "factions[]", faction.id, @user.factions.include?(faction) %>
     <%= label_tag faction.name %><br/>

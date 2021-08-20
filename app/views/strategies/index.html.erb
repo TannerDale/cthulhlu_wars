@@ -1,0 +1,21 @@
+<h1>Strategies for <%= Faction.find(params[:faction_id]).name %></h1>
+
+<ul>
+  <% @strategies.each do |strat| %>
+    <li>Turn <%= strat.turn %>:</li>
+    <ul>
+      <li><%= strat.description %></li>
+      <li><%= link_to 'Delete Strat', "/factions/#{params[:faction_id]}/strategies/#{strat.id}", method: :delete %></li>
+    </ul>
+  <% end %>
+</ul>
+<br/>
+<h3>Add New Strat:</h3>
+<%= form_with url: "/factions/#{params[:faction_id]}/strategies", method: :post do |f| %>
+  <%= f.hidden_field :faction_id, value: params[:faction_id] %>
+  <%= f.label :turn %><br/>
+  <%= f.number_field :turn %><br/>
+  <%= f.label :description %><br/>
+  <%= f.text_field :description %><br/>
+  <%= f.submit 'Add Strat', class: 'btn btn-primary' %>
+<% end %>

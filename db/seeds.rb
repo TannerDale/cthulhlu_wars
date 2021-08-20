@@ -75,6 +75,8 @@ gc = Faction.create!({
   unique_ability: 'Immortal (Ongoing): Once Cthulhu has Awakened, he costs only 4 Power each subsequent time he is Awakened. Whenever you Awaken any Great Old One, gain 1 Elder Sign.'
 })
 
+gc = Faction.where(name: 'Great Cthulhu')
+
 # Great Old Ones
 
 # Yellow Sign (ys) GOO

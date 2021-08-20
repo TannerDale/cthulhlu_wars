@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root to: 'welcome#index'
 
-  resources :factions
+  resources :factions do # resources :faction, path: 'teams' to change url
+    resources :strategies, except: [:show, :edit, :new]
+  end
 
   resources :great_old_ones
 
-  resources :users
+  resource :user
   get 'sign_up', action: :new, controller: 'users'
   get 'profile', action: :show, controller: 'users'
 
@@ -13,8 +15,9 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-  get '/users/:id/factions/edit', to: 'user_factions#edit'
-  patch '/user_factions', to: 'user_factions#update'
+  get 'profile/factions/edit', to: 'user_factions#edit'
+  get 'profile/factions/:faction_id', to: 'user_factions#show'
+  patch '/profile/factions', to: 'user_factions#update'
 
   namespace :admin do
     get '/dashboard', to: "dashboard#index"
@@ -23,3 +26,9 @@ Rails.application.routes.draw do
 
   patch '/can_attends', to: 'can_attends#update'
 end
+
+# resource (singular)
+# use strategies over user_strategies since we are never showing more than 1 users strategies
+# un-nest strategies since only ever using 1 user at a time
+# faction strategy takes over for user strategies
+#
