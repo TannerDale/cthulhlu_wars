@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Cthulhu Wars Scheduling and Strategy Planning
 
-Things you may want to cover:
+This application is designed to aid in the scheduling of game days and light strategy planning for chosen faction.
+Admins can set days they are available to host and view players who are and are not able to attended.
+Players can indicate what days they are able to attended, view information about the different available factions, and plan their strategies for the upcoming game.
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby 2.7.2
+* Rails 5.2.6
+* PostgreSQL
