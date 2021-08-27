@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_17_190045) do
+ActiveRecord::Schema.define(version: 2021_08_23_153644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(version: 2021_08_17_190045) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
+    t.string "username", null: false
+    t.string "password_digest", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
@@ -128,7 +128,3 @@ ActiveRecord::Schema.define(version: 2021_08_17_190045) do
   add_foreign_key "user_factions", "factions"
   add_foreign_key "user_factions", "users"
 end
-
-# on_delete: :cascade, if faction gets deleted: delete this record also
-# do same for user, don't want to remove from all factions before being able to delete it
-# will need to remake foreign keys
