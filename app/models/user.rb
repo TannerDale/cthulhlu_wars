@@ -15,6 +15,9 @@ class User < ApplicationRecord
 
   has_many :strategies, dependent: :destroy
 
+  has_many :memberships, dependent: :destroy
+  has_many :teams, through: :memberships
+
   def liked_factions
     factions.order(:name)
   end

@@ -3,16 +3,21 @@ class UsersController < ApplicationController
   end
 
   def new
+    if !session[:validated]
+      flash[:alert] = 'You must join the team before creating an account'
+      redirect_to root_path
+    end
   end
 
   def create
     new_user = User.create(user_params)
-    if new_user.validate
-      flash[:success] = "Welcome #{new_user.username}"
+    if new_user.validate && session[:validated]
+      flash[:success] = "Welcome #{new_user.username}!"
       session[:user_id] = new_user.id
 
-      redirect_to '/'
+      redirect_to root_path
     else
+      flash[:alert] = 'Invalid loggin.'
       render :new
     end
   end

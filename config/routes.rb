@@ -25,6 +25,11 @@ Rails.application.routes.draw do
   end
 
   patch '/can_attends', to: 'can_attends#update'
+
+  get '/teams/:id/edit', to: 'teams#edit'
+  get '/teams/:id', to: 'teams#show'
+  patch '/teams/:id', to: 'teams#update'
+
 end
 
 # resource (singular)
