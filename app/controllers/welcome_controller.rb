@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
     if current_user
       @game_days = GameDay.days
     else
-      redirect_to '/teams/1/edit'
+      redirect_to '/join_team'
     end
   end
 end
