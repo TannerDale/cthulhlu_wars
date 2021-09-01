@@ -1,6 +1,6 @@
 class GreatOldOnesController < ApplicationController
   def index
-    @great_old_ones = GreatOldOne.all.sort_by(&:name)
+    @great_old_ones = GreatOldOne.ordered
   end
 
   def new

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_153644) do
+ActiveRecord::Schema.define(version: 2021_08_29_020737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,15 @@ ActiveRecord::Schema.define(version: 2021_08_23_153644) do
     t.index ["faction_id"], name: "index_great_old_ones_on_faction_id"
   end
 
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_memberships_on_team_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "monsters", force: :cascade do |t|
     t.bigint "faction_id"
     t.string "name"
@@ -99,6 +108,13 @@ ActiveRecord::Schema.define(version: 2021_08_23_153644) do
     t.index ["user_id"], name: "index_strategies_on_user_id"
   end
 
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_factions", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "faction_id"
@@ -120,6 +136,8 @@ ActiveRecord::Schema.define(version: 2021_08_23_153644) do
   add_foreign_key "can_attends", "users"
   add_foreign_key "cultists", "factions"
   add_foreign_key "great_old_ones", "factions"
+  add_foreign_key "memberships", "teams"
+  add_foreign_key "memberships", "users"
   add_foreign_key "monsters", "factions"
   add_foreign_key "spellbook_requirements", "factions"
   add_foreign_key "spellbooks", "factions"
