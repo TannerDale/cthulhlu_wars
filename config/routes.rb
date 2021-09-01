@@ -26,7 +26,7 @@ Rails.application.routes.draw do
 
   patch '/can_attends', to: 'can_attends#update'
 
-  get '/teams/:id/edit', to: 'teams#edit'
+  get '/teams/:id/edit', to: 'teams#edit', as: '/join_team'
   get '/teams/:id', to: 'teams#show'
   patch '/teams/:id', to: 'teams#update'
 
